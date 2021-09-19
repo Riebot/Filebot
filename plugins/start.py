@@ -73,8 +73,8 @@ async def start_command(client: Client, message: Message):
         reply_markup = InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("😊 About Me", callback_data = "about"),
-                    InlineKeyboardButton("🔒 Close", callback_data = "close")
+                    InlineKeyboardButton("ℹ Info", callback_data = "about"),
+                    InlineKeyboardButton("❌ Close", callback_data = "close")
                 ]
             ]
         )
@@ -94,7 +94,7 @@ async def start_command(client: Client, message: Message):
 
 @Bot.on_message(filters.command('start') & filters.private)
 async def not_joined(client: Client, message: Message):
-    text = "<b>Kamu harus join/gabung channel terlebih dahulu agar bisa menonton video! Klik Disini jika sudah join dan Coba Lagi\n\njoin Channel nya dulu dong</b>"
+    text = "<b>Kamu harus join/gabung ke channel terlebih dahulu agar bisa menonton video! Klik Disini jika sudah join dan Coba Lagi\n\njoin Channel nya dulu dong</b>"
     message_text = message.text
     try:
         command, argument = message_text.split()
