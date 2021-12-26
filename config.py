@@ -17,12 +17,6 @@ CHANNEL_ID = int(os.environ.get("CHANNEL_ID", ""))
 #OWNER ID
 OWNER_ID = int(os.environ.get("OWNER_ID", ""))
 
-# NAMA OWNER
-OWNER = int(os.environ.get("OWNER", ""))
-
-# Username CH
-CHANNEL = int(os.environ.get("CHANNEL", ""))
-
 #force sub channel id, if you want enable force sub
 FORCE_SUB_CHANNEL = int(os.environ.get("FORCE_SUB_CHANNEL", "0"))
 
