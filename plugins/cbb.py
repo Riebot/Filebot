@@ -1,28 +1,25 @@
 #(©)Codexbotz
 
-from pyrogram import __version__
+
 from bot import Bot
-from config import OWNER_ID
-from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
+from config import CHANNEL, GROUP, OWNER, OWNER_ID
+from pyrogram.types import CallbackQuery, InlineKeyboardButton, InlineKeyboardMarkup
+
 
 @Bot.on_callback_query()
 async def cb_handler(client: Bot, query: CallbackQuery):
     data = query.data
     if data == "about":
         await query.message.edit_text(
-            text = f"<b>👑 Owner bot : <a href='tg://user?id={OWNER_ID}'>ʜᴧʀ• [ʀᴇʜᴀᴛ]</a>\n💦 Channel : @kiwpiwsex\n☕ Manage by : @SilenceSpe4ks</b>",
-            disable_web_page_preview = True,
-            reply_markup = InlineKeyboardMarkup(
-                [
-                    [
-                        InlineKeyboardButton("❌ 𝗧𝘂𝘁𝘂𝗽 ❌", callback_data = "close")
-                    ]
-                ]
-            )
+            text=f"<b>Info Bot :\n\n 👑 Owner: @{OWNER}\n 🎬 Channel: @{CHANNEL}\n ☕ Managed by : <a href='https://t.me/SilenceSpe4ks'>Klik Disini</a></b>\n",
+            disable_web_page_preview=True,
+            reply_markup=InlineKeyboardMarkup(
+                [[InlineKeyboardButton("❌ 𝐓𝐔𝐓𝐔𝐏 ❌", callback_data="close")]]
+            ),
         )
     elif data == "close":
         await query.message.delete()
         try:
             await query.message.reply_to_message.delete()
-        except:
+        except BaseException:
             pass
