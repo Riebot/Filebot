@@ -88,11 +88,14 @@ async def start_command(client: Client, message: Message):
                 mention=message.from_user.mention,
                 id=message.from_user.id,
             ),
-            reply_markup = reply_markup,
-            disable_web_page_preview = True,
-            quote = True
+            reply_markup=InlineKeyboardMarkup(buttons),
+            disable_web_page_preview=True,
+            quote=True,
         )
-        return
+     
+     return
+
+
 
 @Bot.on_message(filters.command('start') & filters.private)
 async def not_joined(client: Client, message: Message):
