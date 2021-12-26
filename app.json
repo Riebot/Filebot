@@ -8,7 +8,7 @@
     "sharing"
   ],
   "repository": "https://github.com/Riebot/Filebot",
-  "logo": "https://telegra.ph/file/14d3013fda21281c54b61.jpg",
+  "logo": "https://telegra.ph/file/0b822127e2e75ea6d0e35.jpg",
   "env": {
     "TG_BOT_TOKEN": {
       "description": "Your Bot token, Get it from @Botfather",
