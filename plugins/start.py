@@ -92,12 +92,11 @@ async def start_command(client: Client, message: Message):
             disable_web_page_preview=True,
             quote=True,
         )
-
         return
 
 @Bot.on_message(filters.command('start') & filters.private)
 async def not_joined(client: Client, message: Message):
-    text = "<b>Kamu harus join atau bergabung ke channel terlebih dahulu agar bisa menonton videonya! Klik Disini jika sudah join dan Coba Lagi\n\njoin Channel Atau Group</b>"
+    text = "<b>Kamu harus join atau bergabung ke channel terlebih dahulu agar bisa menonton videonya dan Klik Disini jika sudah join, silahkan start kembali atau coba lagi..\n\njoin Channel Atau Group</b>"
     message_text = message.text
     try:
         command, argument = message_text.split()
