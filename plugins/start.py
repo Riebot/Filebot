@@ -106,6 +106,8 @@ async def not_joined(client: Client, message: Message):
     except ValueError:
         pass
     reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("• ᴋʟɪᴋ ᴅɪsɪɴɪ •", url = client.invitelink)]])
+    reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("• ᴄᴏʙᴀ ʟᴀɢɪ •", url =f"https://t.me/{client.username}?start={message.command[1])]])
+
     await message.reply(
         text = text,
         reply_markup = reply_markup,
