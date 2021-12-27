@@ -41,11 +41,11 @@ async def start_command(client: Client, message: Message):
                 ids = [int(int(argument[1]) / abs(client.db_channel.id))]
             except:
                 return
-        temp_msg = await message.reply("**Tunggu Sebentar**...")
+        temp_msg = await message.reply("<code>Tunggu Sebentar...</code>")
         try:
             messages = await get_messages(client, ids)
         except:
-            await message.reply_text("**Sedang Mengalami Kendala**..!")
+            await message.reply_text("<b>Sedang Mengalami Kendala...</b>")
             return
         await temp_msg.delete()
 
