@@ -4,7 +4,6 @@ from pyrogram import Client, filters
 from pyrogram.errors import FloodWait, InputUserDeactivated, UserIsBlocked
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 
-
 from bot import Bot
 from config import ADMINS, START_MSG, OWNER_ID, CUSTOM_CAPTION, DISABLE_CHANNEL_BUTTON
 from database.sql import add_user, full_userbase, query_msg
@@ -72,10 +71,12 @@ async def start_command(client: Client, message: Message):
         return
     else:
         reply_markup = InlineKeyboardMarkup(
-               [
+            [
+                [
                     InlineKeyboardButton("📑 ᴛᴇɴᴛᴀɴɢ sᴀʏᴀ", callback_data = "about"),
-                    InlineKeyboardButton("ᴛᴜᴛᴜᴘ ❌", callback_data = "close"),
-               ]
+                    InlineKeyboardButton("ᴛᴜᴛᴜᴘ ❌", callback_data = "close")
+                ]
+            ]
         )
         await message.reply_text(
             text=START_MSG.format(
@@ -91,6 +92,7 @@ async def start_command(client: Client, message: Message):
             disable_web_page_preview=True,
             quote=True,
         )
+
         return
 
 @Bot.on_message(filters.command('start') & filters.private)
@@ -102,10 +104,10 @@ async def not_joined(client: Client, message: Message):
         text = text + f"<b>Dan <a href='https://t.me/{client.username}?start={message.command[1]}'>Coba Lagi</a></b>"
     except ValueError:
         pass
-    reply_markup = InlineKeyboardMarkup(
-            [
-                   InlineKeyboardButton("• ᴋʟɪᴋ ᴅɪsɪɴɪ •", url= client.invitelink),
-                   InlineKeyboardButton("• ᴄᴏʙᴀ ʟᴀɢɪ •", url=f"https://t.me/{client.username}?start={message.command[1]}",
-                )
-            ]
-        )
+    reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("• ᴋʟɪᴋ ᴅɪsɪɴɪ •", url = client.invitelink)]])
+    await message.reply(
+        text = text,
+        reply_markup = reply_markup,
+        quote = True,
+        disable_web_page_preview = True
+    )
