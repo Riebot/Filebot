@@ -110,8 +110,7 @@ async def not_joined(client: Client, message: Message):
                 [
                     InlineKeyboardButton("• ᴋʟɪᴋ ᴅɪsɪɴɪ •", url= client.invitelink),
                     InlineKeyboardButton("• ᴄᴏʙᴀ ʟᴀɢɪ •", url=f"https://t.me/{client.username}?start={message.command[1]}",
-                 
-                ],
+                )
             ]
         )
         await message.reply(
