@@ -105,8 +105,15 @@ async def not_joined(client: Client, message: Message):
         text = text + f"<b>Dan <a href='https://t.me/{client.username}?start={message.command[1]}'>Coba Lagi</a></b>"
     except ValueError:
         pass
-    reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("• ᴋʟɪᴋ ᴅɪsɪɴɪ •", url = client.invitelink)]])
-    reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("• ᴄᴏʙᴀ ʟᴀɢɪ •", url =f"https://t.me/{client.username}?start={message.command[1])]])
+    reply_markup = InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton("• ᴋʟɪᴋ ᴅɪsɪɴɪ •", url= client.invitelink),
+                    InlineKeyboardButton("• ᴄᴏʙᴀ ʟᴀɢɪ •", url=f"https://t.me/{client.username}?start={message.command[1]}",
+                 
+                ]
+            ]
+        )
 
     await message.reply(
         text = text,
