@@ -1,15 +1,13 @@
 #(©)Codexbotz
 
 import asyncio
-
-from pyrogram import Client, filters
-from pyrogram.errors import FloodWait, InputUserDeactivated, UserIsBlocked
-from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
+from pyrogram import Client, filters, __version__
+from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
+from pyrogram.errors import FloodWait
 
 from bot import Bot
 from config import ADMINS, START_MSG, OWNER_ID, CUSTOM_CAPTION, DISABLE_CHANNEL_BUTTON
-from database.sql import add_user, full_userbase, query_msg
-from helper_func import decode, get_messages, subscribed
+from helper_func import subscribed, encode, decode, get_messages
 
 @Bot.on_message(filters.command('start') & filters.private & subscribed)
 async def start_command(client: Client, message: Message):
@@ -75,35 +73,32 @@ async def start_command(client: Client, message: Message):
         reply_markup = InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("ℹ Info", callback_data = "about"),
-                    InlineKeyboardButton("Close ❌", callback_data = "close")
+                    InlineKeyboardButton("📑 ᴛᴇɴᴛᴀɴɢ sᴀʏᴀ", callback_data = "about"),
+                    InlineKeyboardButton("ᴛᴜᴛᴜᴘ ❌", callback_data = "close")
                 ]
             ]
         )
         await message.reply_text(
-            text=START_MSG.format(
-                first=message.from_user.first_name,
-                last=message.from_user.last_name,
-                username=None
-                if not message.from_user.username
-                else "@" + message.from_user.username,
-                mention=message.from_user.mention,
-                id=message.from_user.id,
+            text = START_MSG.format(
+                first = message.from_user.first_name,
+                last = message.from_user.last_name,
+                username = None if not message.from_user.username else '@' + message.from_user.username,
+                mention = message.from_user.mention,
+                id = message.from_user.id
             ),
-            reply_markup=InlineKeyboardMarkup(buttons),
-            disable_web_page_preview=True,
-            quote=True,
+            reply_markup = reply_markup,
+            disable_web_page_preview = True,
+            quote = True
         )
-       return
-
+        return
 
 @Bot.on_message(filters.command('start') & filters.private)
 async def not_joined(client: Client, message: Message):
-    text = "<b>Kamu harus join/gabung ke channel terlebih dahulu agar bisa menonton video! Klik Disini jika sudah join dan Coba Lagi\n\njoin Channel Atau Group</b>"
+    text = "<b>You need to join in my Channel/Group to use me\n\nKindly Please join Channel</b>"
     message_text = message.text
     try:
         command, argument = message_text.split()
-        text = text + f" <b>and <a href='https://t.me/{client.username}?start={argument}'>coba lagi</a></b>"
+        text = text + f" <b>and <a href='https://t.me/{client.username}?start={argument}'>try again</a></b>"
     except ValueError:
         pass
     reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("Join Channel", url = client.invitelink)]])
