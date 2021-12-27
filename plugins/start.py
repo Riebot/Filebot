@@ -75,8 +75,8 @@ async def start_command(client: Client, message: Message):
                 [
                     InlineKeyboardButton("📑 ᴛᴇɴᴛᴀɴɢ sᴀʏᴀ", callback_data = "about"),
                     InlineKeyboardButton("ᴛᴜᴛᴜᴘ ❌", callback_data = "close"),
-                ],
-            ]
+                ]
+            )
         )
         await message.reply_text(
             text=START_MSG.format(
@@ -92,7 +92,6 @@ async def start_command(client: Client, message: Message):
             disable_web_page_preview=True,
             quote=True,
         )
-
         return
 
 @Bot.on_message(filters.command('start') & filters.private)
