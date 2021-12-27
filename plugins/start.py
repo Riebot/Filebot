@@ -1,13 +1,14 @@
 #(©)Codexbotz
 
-import asyncio
-from pyrogram import Client, filters, __version__
-from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
-from pyrogram.errors import FloodWait
+from pyrogram import Client, filters
+from pyrogram.errors import FloodWait, InputUserDeactivated, UserIsBlocked
+from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
+
 
 from bot import Bot
-from config import ADMINS, START_MSG, OWNER_ID, CUSTOM_CAPTION, DISABLE_CHANNEL_BUTTON
-from helper_func import subscribed, encode, decode, get_messages
+from config import ADMINS, CUSTOM_CAPTION, DISABLE_CHANNEL_BUTTON, FORCE_MSG, START_MSG
+from database.sql import add_user, full_userbase, query_msg
+from helper_func import decode, get_messages, subscribed
 
 @Bot.on_message(filters.command('start') & filters.private & subscribed)
 async def start_command(client: Client, message: Message):
