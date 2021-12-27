@@ -1,7 +1,7 @@
 #(©)Codexbotz
 
 import asyncio
-
+import base64
 
 from pyrogram import Client, filters
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, Message
