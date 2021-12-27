@@ -109,7 +109,7 @@ async def not_joined(client: Client, message: Message):
                 )
             ]
         )
-        await message.reply(
+        await message.reply_text(
         text = text,
         reply_markup = reply_markup,
         quote = True,
